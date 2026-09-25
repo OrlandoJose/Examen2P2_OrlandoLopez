@@ -4,14 +4,16 @@
  */
 package examen2p2_orlandolopez;
 import java.util.ArrayList;
+import java.util.Random;
 /**
  *
  * @author Home
  */
+ 
 public class Luchador {
     String Nombre;
       String Reino ;
-    int Vida;
+        int Vida;
        double Ataque ;
        int Velocidad ;
     int Probabilidad;
@@ -95,13 +97,35 @@ ArrayList<Habilidad>lista=new ArrayList<>();
         lista.add(h);
     }
     public double GolpeNormal(Luchador d){
-        
-        double causado = (d.getAtaque()*(d.getProbabilidad()))*0.5;
-        
+        Random R=new Random();
+        double causado=0;
+        int cont=0;
+        double mul=0;
+        int probabilidad=R.nextInt(100)+1;
+
+        for(int i=0;i<5;i++){
+        cont++;
+        if(cont==2){
+            mul=0.8;
+        }else if(cont==3){
+            mul=0.6;
+        }else if(cont==4){
+            mul=0.4;
+        }else if(cont==5){
+            mul=0.2;
+        }
+        if(cont==1){
+                            double factorcombo=mul*d.getAtaque();      
+         causado=(d.getAtaque()*(factorcombo))*0.5;
+        }
+    if(cont==2&&probabilidad<=d.getProbabilidad()){
+                double factorcombo=mul*d.getAtaque();      
+         causado=(d.getAtaque()*(factorcombo))*0.5;
+    }  else{
+        causado=0;
+    }   
+        }
     return causado;}
-//    public double LanzarHabilidad(Luchador enemigo){
-//        double=
-//    }
     @Override
     public String toString() {
         return "Nombre  ";
