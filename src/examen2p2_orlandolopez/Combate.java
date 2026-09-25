@@ -9,5 +9,53 @@ package examen2p2_orlandolopez;
  * @author Home
  */
 public class Combate {
-    
+    Luchador Usuario; 
+    Luchador Enemigo ;
+     int   numeroRonda ;
+Luchador GanadorLucha ;
+
+    public Combate(Luchador Usuario, Luchador Enemigo, int numeroRonda, Luchador GanadorLucha) {
+        this.Usuario = Usuario;
+        this.Enemigo = Enemigo;
+        this.numeroRonda = numeroRonda;
+        this.GanadorLucha = GanadorLucha;
+    }
+
+    public Luchador getUsuario() {
+        return Usuario;
+    }
+
+    public void setUsuario(Luchador Usuario) {
+        this.Usuario = Usuario;
+    }
+
+    public Luchador getEnemigo() {
+        return Enemigo;
+    }
+
+    public void setEnemigo(Luchador Enemigo) {
+        this.Enemigo = Enemigo;
+    }
+
+    public int getNumeroRonda() {
+        return numeroRonda;
+    }
+
+    public void setNumeroRonda(int numeroRonda) {
+        this.numeroRonda = numeroRonda;
+    }
+
+    public Luchador getGanadorLucha() {
+        return GanadorLucha;
+    }
+
+    public void setGanadorLucha(Luchador GanadorLucha) {
+        this.GanadorLucha = GanadorLucha;
+    }
+
+    @Override
+    public String toString() {
+        return "Combate{" + "Usuario=" + Usuario + ", Enemigo=" + Enemigo + ", numeroRonda=" + numeroRonda + ", GanadorLucha=" + GanadorLucha + '}';
+    }
+
 }
