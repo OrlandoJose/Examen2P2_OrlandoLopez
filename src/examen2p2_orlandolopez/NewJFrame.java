@@ -57,7 +57,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton13 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jButton14 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -140,9 +139,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextArea2.setRows(5);
         jScrollPane3.setViewportView(jTextArea2);
 
-        jButton14.setText("Guardar Luchador");
-        jButton14.addActionListener(this::jButton14ActionPerformed);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -150,12 +146,8 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(246, 246, 246)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton14)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(jButton13))))
+                        .addGap(268, 268, 268)
+                        .addComponent(jButton13))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -164,9 +156,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jButton14)
-                .addGap(34, 34, 34)
+                .addGap(95, 95, 95)
                 .addComponent(jButton13)
                 .addGap(49, 49, 49)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -329,6 +319,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton11.setText("Iniciar");
+        jButton11.addActionListener(this::jButton11ActionPerformed);
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel17.setText("Luchador");
@@ -542,15 +533,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jt_arbolitoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_arbolitoMouseClicked
                 DefaultMutableTreeNode nodoSeleccionado=(DefaultMutableTreeNode) jt_arbolito.getSelectionPath().getLastPathComponent();
         Object elemento=nodoSeleccionado.getUserObject();
-
-        if (elemento instanceof Usuario) {
-            Usuario usuario = (Usuario) nodoSeleccionado.getUserObject();
-            lbl_label.setText(usuario.getNombre());
-            lbl_tipo.setText(usuario.getTipo() + "");
+        if (elemento instanceof Reino) {
+            Reino rey = (Reino) nodoSeleccionado.getUserObject();
 
         } else {
-            lbl_label.setText("N/A");
-            lbl_tipo.setText("N/A");
         }
 
     }//GEN-LAST:event_jt_arbolitoMouseClicked
@@ -606,12 +592,17 @@ public class NewJFrame extends javax.swing.JFrame {
         double bn=Double.parseDouble(BonoHabilidad);
         int probcom=Integer.parseInt(probabilidadcombo);
         int v=Integer.parseInt(Velocidad);
-        int vidas=Integer.parseInt(Vida);        
+        int vidas=Integer.parseInt(Vida);
+        int ataque=Integer.parseInt(Ataque);      
         reino1.add(temp);
-        Luchador temp1=new Luchador(Nombre,reino,vidas,Ataque,v,probcom,bn);
+        Luchador temp1=new Luchador(Nombre,reino,vidas,ataque,v,probcom,bn);
         DefaultComboBoxModel modelo=(DefaultComboBoxModel)jComboBox1.getModel();
+         DefaultComboBoxModel modelo1=(DefaultComboBoxModel)jComboBox7.getModel();
+         DefaultComboBoxModel modelo2=(DefaultComboBoxModel)jComboBox8.getModel();
         luchador.add(temp1);
         modelo.addElement(temp1);
+        modelo1.addElement(modelo1);
+        modelo2.addElement(modelo2);
                     }catch(Exception e){
                         System.out.println("error");
                     }
@@ -630,13 +621,6 @@ public class NewJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton13ActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        metodo();
-    }//GEN-LAST:event_jButton14ActionPerformed
-public void metodo(){    
-   
-
-}
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
            int indice=jComboBox1.getSelectedIndex();
            int efectoin=jComboBox2.getSelectedIndex();
@@ -656,6 +640,19 @@ public void metodo(){
         int daño=Integer.parseInt(Daño);
         Habilidad temp=new Habilidad(nombre,daño,efect);
     }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        int indice1=jComboBox7.getSelectedIndex();
+        int indice2=jComboBox8.getSelectedIndex();
+        String vida=""+luchador.get(indice1).getVida();
+        String vida1=""+luchador.get(indice2).getVida();
+        double daño=luchador.get(indice1).GolpeNormal(luchador.get(indice2));
+         double daño1=luchador.get(indice2).GolpeNormal(luchador.get(indice1));
+         int vida3=luchador.get(indice2).getVida();
+         int vida4=luchador.get(indice1).getVida();
+        jLabel21.setText(vida);
+        jLabel22.setText(vida1);
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -689,7 +686,6 @@ ArrayList<Reino>reino1=new ArrayList<>();
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
