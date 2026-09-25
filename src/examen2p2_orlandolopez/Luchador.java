@@ -15,10 +15,10 @@ public class Luchador {
        String Ataque ;
        int Velocidad ;
     int Probabilidad;
-int BonoHabilidad;
+double BonoHabilidad;
 ArrayList<Habilidad>lista=new ArrayList<>();
 
-    public Luchador(String Nombre, String Reino, int Vida, String Ataque, int Velocidad, int Probabilidad, int BonoHabilidad) {
+    public Luchador(String Nombre, String Reino, int Vida, String Ataque, int Velocidad, int Probabilidad, double BonoHabilidad) {
         this.Nombre = Nombre;
         this.Reino = Reino;
         this.Vida = Vida;
@@ -76,7 +76,7 @@ ArrayList<Habilidad>lista=new ArrayList<>();
         this.Probabilidad = Probabilidad;
     }
 
-    public int getBonoHabilidad() {
+    public double getBonoHabilidad() {
         return BonoHabilidad;
     }
 
@@ -91,7 +91,12 @@ ArrayList<Habilidad>lista=new ArrayList<>();
     public void setLista(ArrayList<Habilidad> lista) {
         this.lista = lista;
     }
-
+    public void agregar(Habilidad h){
+        lista.add(h);
+    }
+    public void GolpeNormal(Luchador d){
+        
+    }
     @Override
     public String toString() {
         return "Luchador{" + "Nombre=" + Nombre + ", Reino=" + Reino + ", Vida=" + Vida + ", Ataque=" + Ataque + ", Velocidad=" + Velocidad + ", Probabilidad=" + Probabilidad + ", BonoHabilidad=" + BonoHabilidad + ", lista=" + lista + '}';

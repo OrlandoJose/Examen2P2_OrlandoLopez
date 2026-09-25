@@ -9,5 +9,23 @@ package examen2p2_orlandolopez;
  * @author Home
  */
 public class Reino {
+    String nombre;
+
+    public Reino(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
     
 }

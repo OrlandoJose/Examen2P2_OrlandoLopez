@@ -10,7 +10,7 @@ package examen2p2_orlandolopez;
  */
 public class Habilidad {
     String Nombre;
-    int Daño;
+    double Daño;
 
     public Habilidad(String Nombre, int Daño) {
         this.Nombre = Nombre;
@@ -25,7 +25,7 @@ public class Habilidad {
         this.Nombre = Nombre;
     }
 
-    public int getDaño() {
+    public double getDaño() {
         return Daño;
     }
 
@@ -35,7 +35,7 @@ public class Habilidad {
 
     @Override
     public String toString() {
-        return "Habilidad{" + "Nombre=" + Nombre + ", Da\u00f1o=" + Daño + '}';
+        return "Habilidad{" + "Nombre=" + Nombre + ", Daño=" + Daño + '}';
     }
     
 }
