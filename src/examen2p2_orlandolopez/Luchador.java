@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Luchador {
     String Nombre;
-      String      Reino ;
+      String Reino ;
     int Vida;
        String Ataque ;
        int Velocidad ;
@@ -99,7 +99,7 @@ ArrayList<Habilidad>lista=new ArrayList<>();
     }
     @Override
     public String toString() {
-        return "Luchador{" + "Nombre=" + Nombre + ", Reino=" + Reino + ", Vida=" + Vida + ", Ataque=" + Ataque + ", Velocidad=" + Velocidad + ", Probabilidad=" + Probabilidad + ", BonoHabilidad=" + BonoHabilidad + ", lista=" + lista + '}';
-    }
+        return "Nombre  ";
 
+}
 }

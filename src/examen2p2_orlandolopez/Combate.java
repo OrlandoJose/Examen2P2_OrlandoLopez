@@ -52,7 +52,18 @@ Luchador GanadorLucha ;
     public void setGanadorLucha(Luchador GanadorLucha) {
         this.GanadorLucha = GanadorLucha;
     }
-
+public void LuchadorUsuario(){
+    
+} 
+public void LuchadorEnemigo (){
+    
+}
+public void numeroRonda (){
+    
+}
+public void GanadorLucha(){
+    
+} 
     @Override
     public String toString() {
         return "Combate{" + "Usuario=" + Usuario + ", Enemigo=" + Enemigo + ", numeroRonda=" + numeroRonda + ", GanadorLucha=" + GanadorLucha + '}';
