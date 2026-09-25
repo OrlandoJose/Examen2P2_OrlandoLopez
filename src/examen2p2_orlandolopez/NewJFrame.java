@@ -14,6 +14,7 @@ import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
 /**
  *
  * @author Home
@@ -149,16 +150,16 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(246, 246, 246)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton14)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
-                                .addComponent(jButton13)))))
-                .addContainerGap(212, Short.MAX_VALUE))
+                                .addComponent(jButton13))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -539,7 +540,18 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jt_arbolitoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_arbolitoMouseClicked
+                DefaultMutableTreeNode nodoSeleccionado=(DefaultMutableTreeNode) jt_arbolito.getSelectionPath().getLastPathComponent();
+        Object elemento=nodoSeleccionado.getUserObject();
 
+        if (elemento instanceof Usuario) {
+            Usuario usuario = (Usuario) nodoSeleccionado.getUserObject();
+            lbl_label.setText(usuario.getNombre());
+            lbl_tipo.setText(usuario.getTipo() + "");
+
+        } else {
+            lbl_label.setText("N/A");
+            lbl_tipo.setText("N/A");
+        }
 
     }//GEN-LAST:event_jt_arbolitoMouseClicked
 
@@ -581,6 +593,29 @@ public class NewJFrame extends javax.swing.JFrame {
                 
                 do {
                     System.out.println(lineaActual);
+                    try{
+        String []arreglo=lineaActual.split(";");       
+        String reino=arreglo[0]; 
+        String Nombre=arreglo[1];
+        String Vida=arreglo[2]; 
+        String Ataque=arreglo[3];
+        String Velocidad=arreglo[4];
+        String probabilidadcombo=arreglo[5];
+        String BonoHabilidad=arreglo[6];
+        Reino temp=new Reino(reino);
+        double bn=Double.parseDouble(BonoHabilidad);
+        int probcom=Integer.parseInt(probabilidadcombo);
+        int v=Integer.parseInt(Velocidad);
+        int vidas=Integer.parseInt(Vida);        
+        reino1.add(temp);
+        Luchador temp1=new Luchador(Nombre,reino,vidas,Ataque,v,probcom,bn);
+        DefaultComboBoxModel modelo=(DefaultComboBoxModel)jComboBox1.getModel();
+        luchador.add(temp1);
+        modelo.addElement(temp1);
+                    }catch(Exception e){
+                        System.out.println("error");
+                    }
+                    
                     jTextArea2.append(lineaActual+"\n");
                     lineaActual = br.readLine();
                 } while (lineaActual!=null);
@@ -596,37 +631,30 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        String n=jTextArea2.getText();
-        String []arreglo=n.split(";");      
-        String reino=arreglo[0]; 
-        String Nombre=arreglo[1];
-        String Vida=arreglo[2]; 
-        String Ataque=arreglo[3];
-        String Velocidad=arreglo[4];
-        String probabilidadcombo=arreglo[5];
-        String BonoHabilidad=arreglo[6];
-        Reino temp=new Reino(reino);
-        double bn=Double.parseDouble(BonoHabilidad);
-        int probcom=Integer.parseInt(probabilidadcombo);
-        int v=Integer.parseInt(Velocidad);
-        int vidas=Integer.parseInt(Vida);
-        reino1.add(temp);
-        Luchador temp1=new Luchador(Nombre,reino,vidas,Ataque,v,probcom,bn);
-        DefaultComboBoxModel modelo=(DefaultComboBoxModel)jComboBox1.getModel();
-        luchador.add(temp1);
-        modelo.addElement(temp1);
+        metodo();
     }//GEN-LAST:event_jButton14ActionPerformed
+public void metodo(){    
+   
 
+}
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
            int indice=jComboBox1.getSelectedIndex();
            int efectoin=jComboBox2.getSelectedIndex();
            String efecto="";
+           int efect=0;
            if(efectoin==1){
                efecto="Aturdido";
                
            }else if(efectoin==2){
-               
-           }
+               efecto="Congelado";
+           }else if(efectoin==3){
+               efecto="Quemadura";
+        
+    }
+        String nombre=jTextField1.getText();
+        String Daño=jTextField2.getText();
+        int daño=Integer.parseInt(Daño);
+        Habilidad temp=new Habilidad(nombre,daño,efect);
     }//GEN-LAST:event_jButton15ActionPerformed
 
     /**

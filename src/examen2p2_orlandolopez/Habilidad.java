@@ -11,10 +11,11 @@ package examen2p2_orlandolopez;
 public class Habilidad {
     String Nombre;
     double Daño;
-
-    public Habilidad(String Nombre, int Daño) {
+    int efecto;
+    public Habilidad(String Nombre, int Daño,int efecto) {
         this.Nombre = Nombre;
         this.Daño = Daño;
+        this.efecto=efecto;
     }
 
     public String getNombre() {
@@ -32,7 +33,13 @@ public class Habilidad {
     public void setDaño(int Daño) {
         this.Daño = Daño;
     }
+    public int getEfecto() {
+        return efecto;
+    }
 
+    public void setEfecto(int efecto) {
+        this.efecto=efecto;
+    }
     @Override
     public String toString() {
         return "Habilidad{" + "Nombre=" + Nombre + ", Daño=" + Daño + '}';
